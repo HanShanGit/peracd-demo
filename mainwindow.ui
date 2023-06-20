@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>80</y>
+      <y>60</y>
       <width>461</width>
       <height>381</height>
      </rect>
@@ -120,10 +120,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>340</x>
       <y>470</y>
-      <width>461</width>
-      <height>31</height>
+      <width>141</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
@@ -164,6 +164,16 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Resize</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textThread">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>460</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -213,11 +223,25 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionFruit_Info"/>
     <addaction name="actionLog"/>
    </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>|||</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>多线程</string>
+    </property>
+    <addaction name="threadStart"/>
+    <addaction name="threadStop"/>
+   </widget>
    <addaction name="menuStatus"/>
    <addaction name="menuSwitch"/>
    <addaction name="menuHit"/>
    <addaction name="menuHelp"/>
    <addaction name="menuTextShow"/>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -286,6 +310,16 @@ p, li { white-space: pre-wrap; }
   <action name="actionLog">
    <property name="text">
     <string>Log</string>
+   </property>
+  </action>
+  <action name="threadStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="threadStop">
+   <property name="text">
+    <string>Stop</string>
    </property>
   </action>
  </widget>

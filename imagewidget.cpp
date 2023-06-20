@@ -6,9 +6,9 @@
 #include <QDrag>
 #include <math.h>
 
-ImageWidget::ImageWidget(QPixmap *pixmap)
+ImageWidget::ImageWidget(QPixmap &pixmap)
 {
-    m_pix = *pixmap;
+    m_pix = pixmap;
     setAcceptDrops(true);//If enabled is true, this item will accept hover events; otherwise, it will ignore them. By default, items do not accept hover events.
     m_scaleValue = 0;
     m_scaleDafault = 0;

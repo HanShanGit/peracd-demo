@@ -43,11 +43,14 @@ private slots:
 
     void on_picAutoBtn_clicked();
 
+    void updateTime();
+
 private:
     Ui::MainWindow *ui;
     ImageWidget *m_Image;
     QImage *image;
     void writeLog(QString content);
+    QTimer* m_timer;
 };
 
 #endif // MAINWINDOW_H

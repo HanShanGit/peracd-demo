@@ -23,7 +23,7 @@ class ImageWidget : public QGraphicsItem
 {
     //Q_OBJECT
 public:
-    ImageWidget(QPixmap *pixmap);
+    ImageWidget(QPixmap &pixmap);
     QRectF  boundingRect() const;
     void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     void    wheelEvent(QGraphicsSceneWheelEvent *event);

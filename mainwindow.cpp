@@ -6,13 +6,26 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    // 创建定时器
+    m_timer = new QTimer(this);
 
+    // 连接定时器的 timeout() 信号到自定义槽函数
+    connect(m_timer, &QTimer::timeout, this, &MainWindow::updateTime);
+
+    // 设置定时器的时间间隔为1秒（1000毫秒）
+    m_timer->setInterval(1000);
+
+    // 启动定时器
+    m_timer->start();
     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    // 停止定时器
+    m_timer->stop();
+    delete m_timer;
 }
 
 QString getTime(){
@@ -95,7 +108,7 @@ void  MainWindow::recvShowPicSignal(QImage image) // 用到的imagewidget.h与.c
 {
     QPixmap ConvertPixmap=QPixmap::fromImage(image);//The QPixmap class is an off-screen image representation that can be used as a paint device
     QGraphicsScene  *qgraphicsScene = new QGraphicsScene;//要用QGraphicsView就必须要有QGraphicsScene搭配着用
-//    m_Image = new ImageWidget(&ConvertPixmap);//实例化类ImageWidget的对象m_Image，该类继承自QGraphicsItem，是自己写的类【为何要用指针呢】
+//    m_Image = new ImageWidget(ConvertPixmap);//实例化类ImageWidget的对象m_Image，该类继承自QGraphicsItem，是自己写的类【为何要用指针呢】
     int nwith = ui->graphicsView->width();//获取界面控件Graphics View的宽度
     int nheight = ui->graphicsView->height();//获取界面控件Graphics View的高度
 //    m_Image->setQGraphicsViewWH(nwith,nheight);//将界面控件Graphics View的width和height传进类m_Image中
@@ -112,4 +125,14 @@ void MainWindow::on_picAutoBtn_clicked()
     ui->textInfo->append(QString::number(pic.width())+QString::number(pic.height()));
     recvShowPicSignal(pic);
 
+}
+
+void MainWindow::updateTime()
+{
+    // 获取当前时间
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString currentTime = currentDateTime.toString("yyyy-MM-dd hh:mm:ss");
+
+    // 设置状态栏消息
+    statusBar()->showMessage(currentTime);
 }
