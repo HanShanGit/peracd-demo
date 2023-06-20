@@ -136,3 +136,11 @@ void MainWindow::updateTime()
     // 设置状态栏消息
     statusBar()->showMessage(currentTime);
 }
+
+void MainWindow::on_threadStart_triggered()
+{
+    for(int i=0;i<5;i++){
+        ui->textThread->setText(QString::number(i*i));
+        QThread::sleep(1000);
+    }
+}

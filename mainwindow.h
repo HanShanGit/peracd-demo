@@ -12,6 +12,7 @@
 #include <QTextStream>
 #include <QFile>
 #include "imagewidget.h"
+#include "mythread.h"
 
 namespace Ui {
 class MainWindow;
@@ -44,6 +45,8 @@ private slots:
     void on_picAutoBtn_clicked();
 
     void updateTime();
+
+    void on_threadStart_triggered();
 
 private:
     Ui::MainWindow *ui;

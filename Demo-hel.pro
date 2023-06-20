@@ -31,7 +31,8 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    imagewidget.h
+    imagewidget.h \
+    mythread.h
 
 FORMS += \
         mainwindow.ui
