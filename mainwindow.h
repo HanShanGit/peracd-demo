@@ -11,13 +11,13 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QFile>
-#include "imagewidget.h"
+
 #include "mythread.h"
 
 namespace Ui {
 class MainWindow;
 }
-
+class ImageWidget;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

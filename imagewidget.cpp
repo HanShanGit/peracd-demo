@@ -7,6 +7,7 @@
 #include <math.h>
 
 ImageWidget::ImageWidget(QPixmap &pixmap)
+    :QGraphicsItem(nullptr)
 {
     m_pix = pixmap;
     setAcceptDrops(true);//If enabled is true, this item will accept hover events; otherwise, it will ignore them. By default, items do not accept hover events.
