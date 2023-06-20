@@ -41,6 +41,8 @@ private slots:
 
     void on_picBtn_clicked();
 
+    void on_picAutoBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     ImageWidget *m_Image;

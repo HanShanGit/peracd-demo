@@ -78,7 +78,7 @@ void MainWindow::on_picBtn_clicked()
     if(fileName != "")
     {
 
-        if(image->load(fileName)) // load出错，原因未知
+        if(image->load(fileName))
         {
             ui->textInfo->append(fileName);
             QGraphicsScene *scene = new QGraphicsScene;
@@ -93,14 +93,23 @@ void MainWindow::on_picBtn_clicked()
 
 void  MainWindow::recvShowPicSignal(QImage image) // 用到的imagewidget.h与.cpp
 {
-//    QPixmap ConvertPixmap=QPixmap::fromImage(image);//The QPixmap class is an off-screen image representation that can be used as a paint device
-//    QGraphicsScene  *qgraphicsScene = new QGraphicsScene;//要用QGraphicsView就必须要有QGraphicsScene搭配着用
-//    m_Image = new ImageWidget(&ConvertPixmap);//实例化类ImageWidget的对象m_Image，该类继承自QGraphicsItem，是自己写的类
-//    int nwith = ui->graphicsView->width();//获取界面控件Graphics View的宽度
-//    int nheight = ui->graphicsView->height();//获取界面控件Graphics View的高度
+    QPixmap ConvertPixmap=QPixmap::fromImage(image);//The QPixmap class is an off-screen image representation that can be used as a paint device
+    QGraphicsScene  *qgraphicsScene = new QGraphicsScene;//要用QGraphicsView就必须要有QGraphicsScene搭配着用
+//    m_Image = new ImageWidget(&ConvertPixmap);//实例化类ImageWidget的对象m_Image，该类继承自QGraphicsItem，是自己写的类【为何要用指针呢】
+    int nwith = ui->graphicsView->width();//获取界面控件Graphics View的宽度
+    int nheight = ui->graphicsView->height();//获取界面控件Graphics View的高度
 //    m_Image->setQGraphicsViewWH(nwith,nheight);//将界面控件Graphics View的width和height传进类m_Image中
 //    qgraphicsScene->addItem(m_Image);//将QGraphicsItem类对象放进QGraphicsScene中
 //    ui->graphicsView->setSceneRect(QRectF(-(nwith/2),-(nheight/2),nwith,nheight));//使视窗的大小固定在原始大小，不会随图片的放大而放大（默认状态下图片放大的时候视窗两边会自动出现滚动条，并且视窗内的视野会变大），防止图片放大后重新缩小的时候视窗太大而不方便观察图片
 //    ui->graphicsView->setScene(qgraphicsScene);//Sets the current scene to scene. If scene is already being viewed, this function does nothing.
 //    ui->graphicsView->setFocus();//将界面的焦点设置到当前Graphics View控件
+}
+
+void MainWindow::on_picAutoBtn_clicked()
+{
+    QImage pic; //("E:\_Files\screen_log.jpg")
+    pic.load("E:/_Files/screen_log.jpg");
+    ui->textInfo->append(QString::number(pic.width())+QString::number(pic.height()));
+    recvShowPicSignal(pic);
+
 }
