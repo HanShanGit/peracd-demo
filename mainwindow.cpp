@@ -73,29 +73,19 @@ void MainWindow::on_picBtn_clicked()
                     this, "open image file",
                     ".",
                     "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
-//    try {
-//        if(image->load(fileName)){
-//            ui->textInfo->append(fileName+"图片加载成功");
-//        }
-//        else{
-//            ui->textInfo->append(fileName+"图片加载失败");
-//        }
-//    }
-//    catch (const EXCEPTION_RECORD64 e) {
-//        ui->textInfo->append("nothing");
-//    }
-
+    image = new QImage();
 
     if(fileName != "")
     {
+
         if(image->load(fileName)) // load出错，原因未知
         {
             ui->textInfo->append(fileName);
-            //QGraphicsScene *scene = new QGraphicsScene;
-            //scene->addPixmap(QPixmap::fromImage(*image));
-            //ui->graphicsView->setScene(scene);
-            //ui->graphicsView->resize(image->width() + 10, image->height() + 10); // 大小不对
-            //ui->graphicsView->show();
+            QGraphicsScene *scene = new QGraphicsScene;
+            scene->addPixmap(QPixmap::fromImage(*image));
+            ui->graphicsView->setScene(scene);
+            ui->graphicsView->resize(image->width() + 10, image->height() + 10); // 大小不对
+            ui->graphicsView->show();
         }
     }
 
@@ -103,8 +93,8 @@ void MainWindow::on_picBtn_clicked()
 
 void  MainWindow::recvShowPicSignal(QImage image) // 用到的imagewidget.h与.cpp
 {
-    QPixmap ConvertPixmap=QPixmap::fromImage(image);//The QPixmap class is an off-screen image representation that can be used as a paint device
-    QGraphicsScene  *qgraphicsScene = new QGraphicsScene;//要用QGraphicsView就必须要有QGraphicsScene搭配着用
+//    QPixmap ConvertPixmap=QPixmap::fromImage(image);//The QPixmap class is an off-screen image representation that can be used as a paint device
+//    QGraphicsScene  *qgraphicsScene = new QGraphicsScene;//要用QGraphicsView就必须要有QGraphicsScene搭配着用
 //    m_Image = new ImageWidget(&ConvertPixmap);//实例化类ImageWidget的对象m_Image，该类继承自QGraphicsItem，是自己写的类
 //    int nwith = ui->graphicsView->width();//获取界面控件Graphics View的宽度
 //    int nheight = ui->graphicsView->height();//获取界面控件Graphics View的高度
