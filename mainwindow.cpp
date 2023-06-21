@@ -121,9 +121,14 @@ void  MainWindow::recvShowPicSignal(QImage image) // 用到的imagewidget.h与.c
 
 void MainWindow::on_picAutoBtn_clicked()
 {
+	QString fileName = QFileDialog::getOpenFileName(// 正常加载
+		this, "open image file",
+		".",
+		"Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
+	image = new QImage();
     QImage pic; //("E:\_Files\screen_log.jpg")
-    pic.load("E:/_Files/screen_log.jpg");
-    ui->textInfo->append(QString::number(pic.width())+QString::number(pic.height()));
+    pic.load(fileName);
+    ui->textInfo->append(fileName+"宽度:"+QString::number(pic.width())+ "\t高度:" + QString::number(pic.height()));
     recvShowPicSignal(pic);
 
 }
